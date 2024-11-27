@@ -19,15 +19,44 @@
     // $monAvion->printAvion();
 
     $monElfe = new Elfe("Jojo");
-    echo $monElfe->getName();
+    echo $monElfe->getName() . " : " . $monElfe->getPv() . "<br>";
+    $monElfe->arc();
 
     $monNain = new Nain("Robert");
-    echo $monNain->getName();
+    echo $monNain->getName() . " : " . $monNain->getPv() . "<br>";
 
     $DomeDuTonerre;
     $DomeDuTonerre = [$monElfe, $monNain];
-    
-    $firstStrike = $monNain->defendre()-$monElfe->attaquer();
+
+    $turn = 0;
+    $elfe = $DomeDuTonerre[0];
+    $nain = $DomeDuTonerre[1];
+
+    while($elfe->getStatut() && $nain->getStatut()){
+        if($turn%2 == 0){
+            $strike = $elfe->defendre()-$nain->attaquer();
+            if($strike<0){
+                $elfe->setPv($elfe->getPv()+$strike);
+            }
+        }else{
+            $strike = $nain->defendre()-$elfe->attaquer();
+            if($strike<0){
+                $nain->setPv($nain->getPv()+$strike);
+            }
+        }
+        
+        echo "<br>Turn $turn: <br>";
+        echo $elfe->getName() . " : " . $elfe->getPv() . " ( " . $elfe->getStatut() . " )<br>";
+        echo $nain->getName() . " : " . $nain->getPv() . " ( " . $nain->getStatut() . " )<br>";
+
+        $turn++;
+    }
+    if(!$elfe->getStatut()){
+        echo "<br>L'elfe est mort !";
+    }
+    if(!$nain->getStatut()){
+        echo "<br>Le nain est mort !";
+    }
 ?>
     
 </body>

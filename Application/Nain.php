@@ -4,7 +4,7 @@ class Nain extends Personnage implements Arme, Talent{
     public function __construct(string $name){
         $this->name= $name;
         $this->pv= 100;
-        $this->endurance= 60;
+        $this->endurance= 50;
         $this->force= 70;
         $this->statut= true;
     }
@@ -20,6 +20,9 @@ class Nain extends Personnage implements Arme, Talent{
     }
     public function setPv( int $pv){
         $this->pv = $pv;
+        if($this->pv<=0){
+            $this->setStatut(false);
+        }
     }
     public function getEndurance(){
         return $this->endurance;
@@ -56,4 +59,15 @@ class Nain extends Personnage implements Arme, Talent{
     public function voleur(){}
     public function assassin(){}
     public function pretre(){}
+
+    public function attaquer(){
+        if( $this->statut ){
+            return $this->force;
+        }else{
+            return 0;
+        }
+    }
+    public function defendre(){
+        return $this->endurance;
+    }
 }

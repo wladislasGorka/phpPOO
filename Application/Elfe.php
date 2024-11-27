@@ -20,6 +20,9 @@ class Elfe extends Personnage implements Arme, Talent{
     }
     public function setPv( int $pv){
         $this->pv = $pv;
+        if($this->pv<=0){
+            $this->setStatut(false);
+        }
     }
     public function getEndurance(){
         return $this->endurance;
@@ -58,4 +61,15 @@ class Elfe extends Personnage implements Arme, Talent{
     public function voleur(){}
     public function assassin(){}
     public function pretre(){}
+
+    public function attaquer(){
+        if( $this->statut ){
+            return $this->force;
+        }else{
+            return 0;
+        }
+    }
+    public function defendre(){
+        return $this->endurance;
+    }
 }

@@ -6,7 +6,7 @@ abstract class Personnage{
     protected int $force;
     protected bool $statut;
 
-    protected function __construct(string $name, int $pv, int $endurance, int $force, bool $statut){
+    protected function __construct(){
     }
 
     public function attaquer(){}

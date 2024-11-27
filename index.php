@@ -17,6 +17,17 @@
     // $monAvion->printAvion();
     // $monAvion->setMarque('AirBus');
     // $monAvion->printAvion();
+
+    $monElfe = new Elfe("Jojo");
+    echo $monElfe->getName();
+
+    $monNain = new Nain("Robert");
+    echo $monNain->getName();
+
+    $DomeDuTonerre;
+    $DomeDuTonerre = [$monElfe, $monNain];
+    
+    $firstStrike = $monNain->defendre()-$monElfe->attaquer();
 ?>
     
 </body>

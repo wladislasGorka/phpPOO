@@ -24,7 +24,7 @@
     $elfes = ["Elrond", "Galadriel", "Legolas", "Arwen", "Thranduil"];
     $nains = ["Gimli", "Thorin", "Balin", "Dwalin", "Bombur"];
     
-    $tailleArmeeElfe = 5;
+    $tailleArmeeElfe = 2;
     $armeeElfe = [];
     $tailleArmeeNain = 2;
     $armeeNain = [];

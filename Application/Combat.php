@@ -16,9 +16,12 @@ class Combat{
             echo "<br>".$this->attaquant->getName()."( ".get_class($this->attaquant)." ) contre ".$this->defenseur->getName()."( ".get_class($this->defenseur)." )<br>";
 
         }
+        echo "<br>Turn $this->turn:";
         if($this->turn %2 == 0){
+            echo "<br>".$this->attaquant->getName()." attaque! <br>";
             $this->attaque($this->attaquant, $this->defenseur);
         }else{
+            echo "<br>".$this->defenseur->getName()." attaque! <br>";
             $this->attaque($this->defenseur, $this->attaquant);
         }
         $this->turnState();
@@ -26,14 +29,13 @@ class Combat{
     }
 
     private function attaque(Personnage $attaquant, Personnage $defenseur){
-        $strike = $defenseur->defendre()-$attaquant->attaquer();
-            if($strike<0){
-                $defenseur->setPv($defenseur->getPv()+$strike);
+        $degats = $attaquant->attaquer()-$defenseur->defendre();
+            if($degats>0){
+                $defenseur->setPv($defenseur->getPv()-$degats);
             }
     }
 
-    private function turnState(){
-        echo "<br>Turn $this->turn: <br>";
+    private function turnState(){        
         echo $this->attaquant->getName() . " : " . $this->attaquant->getPv() . " pv <br>";
         echo $this->defenseur->getName() . " : " . $this->defenseur->getPv() . " pv <br>";
     }

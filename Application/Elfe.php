@@ -64,16 +64,12 @@ class Elfe extends Personnage implements Arme, Talent{
         $this->statut = $statut;
     }
 
-    public function epee(){
-        $this->force = 70;
-    }
-    public function arc(){
-        $this->force = 100;
-    }
-    public function masse(){}
-    public function dague(){}
-    public function baton(){}
-    public function sceptre(){}
+    public function epee(){ $this->force = 24; }
+    public function arc(){ $this->force = 30; }
+    public function masse(){ $this->force = 18; }
+    public function dague(){ $this->force = 24; }
+    public function baton(){ $this->force = 22; }
+    public function sceptre(){ $this->force = 15; }
 
     public function cavalier(){}
     public function magicien(){}
@@ -85,12 +81,18 @@ class Elfe extends Personnage implements Arme, Talent{
 
     public function attaquer(){
         if( $this->statut ){
-            return $this->force;
+            $degats = $this->force;
+            $degats += rand(1,6);
+            return (rand(1,100)<=$this->chance)?$degats*2:$degats;
         }else{
             return 0;
         }
     }
     public function defendre(){
-        return $this->endurance;
+        if(rand(1,100)<=$this->agilite){
+            echo "Esquive! <br>";
+            return 1000;
+        }
+        return $this->armure;
     }
 }

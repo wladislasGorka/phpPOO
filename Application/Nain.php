@@ -83,12 +83,14 @@ class Nain extends Personnage implements Arme, Talent{
 
     public function attaquer(){
         if( $this->statut ){
-            return $this->force;
+            $degats = $this->force;
+            $degats += rand(1,6);
+            return (rand(1,100)<=$this->chance)?$degats*2:$degats;
         }else{
             return 0;
         }
     }
     public function defendre(){
-        return $this->endurance;
+        return (rand(1,100)<=$this->agilite)?1000:$this->armure;
     }
 }

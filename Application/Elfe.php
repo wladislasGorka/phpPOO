@@ -27,6 +27,7 @@ class Elfe extends Personnage implements Arme, Talent{
     public function setPv( int $pv){
         $this->pv = $pv;
         if($this->pv<=0){
+            $this->pv = 0;
             $this->setStatut(false);
         }
     }

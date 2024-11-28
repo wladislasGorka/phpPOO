@@ -12,16 +12,16 @@ class Combat{
 
     public function turn(){
         if($this->turn == 0){
-            echo "<br>Debut du combat!";
-            echo "<br>".$this->attaquant->getName()."( ".get_class($this->attaquant)." ".$this->attaquant->getTalent()." avec ".$this->attaquant->getArme()." ) contre ".$this->defenseur->getName()."( ".get_class($this->defenseur)." ".$this->defenseur->getTalent()." avec ".$this->defenseur->getArme()." )<br>";
+            echo "<br>Debut du combat!<br>";
+            echo $this->attaquant->getName()."( ".get_class($this->attaquant)." ".$this->attaquant->getTalent()." avec ".$this->attaquant->getArme()." ) contre ".$this->defenseur->getName()."( ".get_class($this->defenseur)." ".$this->defenseur->getTalent()." avec ".$this->defenseur->getArme()." )";
 
         }
-        echo "<br>Turn $this->turn:";
+        echo "<br><br>Turn $this->turn:";
         if($this->turn %2 == 0){
-            echo "<br>".$this->attaquant->getName()." attaque! <br>";
+            echo " ".$this->attaquant->getName()." attaque! <br>";
             $this->attaque($this->attaquant, $this->defenseur);
         }else{
-            echo "<br>".$this->defenseur->getName()." attaque! <br>";
+            echo " ".$this->defenseur->getName()." attaque! <br>";
             $this->attaque($this->defenseur, $this->attaquant);
         }
         $this->turnState();
@@ -36,7 +36,7 @@ class Combat{
     }
 
     private function turnState(){        
-        echo $this->attaquant->getName() . " : " . $this->attaquant->getPv() . " pv <br>";
+        echo $this->attaquant->getName() . " : " . $this->attaquant->getPv() . " pv // ";
         echo $this->defenseur->getName() . " : " . $this->defenseur->getPv() . " pv <br>";
     }
 

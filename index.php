@@ -25,38 +25,16 @@
     $monNain = new Nain("Robert");
     echo $monNain->getName() . " : " . $monNain->getPv() . "<br>";
 
-    $DomeDuTonerre;
-    $DomeDuTonerre = [$monElfe, $monNain];
-
-    $turn = 0;
-    $elfe = $DomeDuTonerre[0];
-    $nain = $DomeDuTonerre[1];
-
-    while($elfe->getStatut() && $nain->getStatut()){
-        if($turn%2 == 0){
-            $strike = $elfe->defendre()-$nain->attaquer();
-            if($strike<0){
-                $elfe->setPv($elfe->getPv()+$strike);
-            }
-        }else{
-            $strike = $nain->defendre()-$elfe->attaquer();
-            if($strike<0){
-                $nain->setPv($nain->getPv()+$strike);
-            }
-        }
-        
-        echo "<br>Turn $turn: <br>";
-        echo $elfe->getName() . " : " . $elfe->getPv() . " ( " . $elfe->getStatut() . " )<br>";
-        echo $nain->getName() . " : " . $nain->getPv() . " ( " . $nain->getStatut() . " )<br>";
-
-        $turn++;
+    $combat = new Combat($monElfe,$monNain);
+    while(!$combat->isEnded()){
+        $combat->turn();
     }
-    if(!$elfe->getStatut()){
-        echo "<br>L'elfe est mort !";
-    }
-    if(!$nain->getStatut()){
-        echo "<br>Le nain est mort !";
-    }
+    $combat->result();
+
+    // $DomeDuTonerre;
+    // $DomeDuTonerre = [$monElfe, $monNain];
+    // $elfe = $DomeDuTonerre[0];
+    // $nain = $DomeDuTonerre[1];
 ?>
     
 </body>

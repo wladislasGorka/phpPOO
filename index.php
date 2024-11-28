@@ -18,9 +18,6 @@
     // $monAvion->setMarque('AirBus');
     // $monAvion->printAvion();
 
-    $monElfe = new Elfe("Jojo");
-    //$monElfe->arc();
-
     $elfes = ["Elrond", "Galadriel", "Legolas", "Arwen", "Thranduil"];
     $nains = ["Gimli", "Thorin", "Balin", "Dwalin", "Bombur"];
     
@@ -30,14 +27,14 @@
     $armeeNain = [];
     for ($i = 0; $i < $tailleArmeeElfe; $i++){
         $newElfe = new Elfe($elfes[$i]);
-        //$newElfe->arc();
+        $newElfe->equiperArmeAleatoire();
         $armeeElfe[$i] = $newElfe;
     }
     for ($i = 0; $i < $tailleArmeeNain; $i++){
         $newNain = new Nain($nains[$i]);
+        $newNain->equiperArmeAleatoire();
         $armeeNain[$i] = $newNain;
     }
-
 
     $combattantElfe = 0;
     $combattantNain = 0;

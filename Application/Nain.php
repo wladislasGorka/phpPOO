@@ -5,10 +5,12 @@ class Nain extends Personnage implements Arme, Talent{
         $this->name= $name;
         $this->pv= 100;
         $this->endurance= 50;
-        $this->force= 20;
-        $this->agilite= 15;
+        $this->force= 25;
+        $this->forceBonus= 0;
+        $this->agilite= 10;
         $this->chance= 10;
-        $this->armure= 5;
+        $this->armure= 10;
+        $this->arme= "mains nues";
         $this->statut= true;
     }
 
@@ -39,6 +41,12 @@ class Nain extends Personnage implements Arme, Talent{
     public function setForce(int $force){
         $this->force = $force;
     }
+    public function getForceBonus(){
+        return $this->forceBonus;
+    }
+    public function setForceBonus(int $forceBonus){
+        $this->forceBonus = $forceBonus;
+    }
     public function getAgilite(){
         return $this->agilite;
     }
@@ -57,6 +65,12 @@ class Nain extends Personnage implements Arme, Talent{
     public function setArmure(int $armure){
         $this->armure = $armure;
     }
+    public function getArme(){
+        return $this->arme;
+    }
+    public function setArme(int $arme){
+        $this->arme = $arme;
+    }
     public function getStatut(){
         return $this->statut;
     }
@@ -64,15 +78,19 @@ class Nain extends Personnage implements Arme, Talent{
         $this->statut = $statut;
     }
 
-    public function epee(){}
-    public function arc(){}
-    public function masse(){
-        $this->force = 120;
-    }
-    public function dague(){}
-    public function baton(){}
-    public function sceptre(){}
+    public function epee(){ $this->forceBonus = 6; $this->arme = "epee"; }
+    public function arc(){ $this->forceBonus = 0; $this->arme = "arc"; }
+    public function masse(){ $this->forceBonus = 8; $this->arme = "masse"; }
+    public function dague(){ $this->forceBonus = 2; $this->arme = "dague"; }
+    public function baton(){ $this->forceBonus = 2; $this->arme = "baton"; }
+    public function sceptre(){ $this->forceBonus = 4; $this->arme = "sceptre"; }
 
+    public function equiperArmeAleatoire() {
+        $armes = ['epee', 'arc', 'masse', 'dague', 'baton', 'sceptre'];
+        $armeAleatoire = $armes[array_rand($armes)];
+        call_user_func([$this, $armeAleatoire]);
+    }
+    
     public function cavalier(){}
     public function magicien(){}
     public function guerrier(){}
@@ -83,7 +101,7 @@ class Nain extends Personnage implements Arme, Talent{
 
     public function attaquer(){
         if( $this->statut ){
-            $degats = $this->force;
+            $degats = $this->force + $this->forceBonus;
             $degats += rand(1,6);
             return (rand(1,100)<=$this->chance)?$degats*2:$degats;
         }else{

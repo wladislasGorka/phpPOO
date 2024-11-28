@@ -9,10 +9,10 @@ abstract class Personnage{
     protected int $chance;
     protected int $armure;
     protected string $arme;
+    protected string $talent;
     protected bool $statut;
 
-    protected function __construct(){
-    }
+    protected function __construct(){}
 
     public function attaquer(){}
 

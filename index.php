@@ -28,11 +28,13 @@
     for ($i = 0; $i < $tailleArmeeElfe; $i++){
         $newElfe = new Elfe($elfes[$i]);
         $newElfe->equiperArmeAleatoire();
+        $newElfe->equiperTalentAleatoire();
         $armeeElfe[$i] = $newElfe;
     }
     for ($i = 0; $i < $tailleArmeeNain; $i++){
         $newNain = new Nain($nains[$i]);
         $newNain->equiperArmeAleatoire();
+        $newNain->equiperTalentAleatoire();
         $armeeNain[$i] = $newNain;
     }
 

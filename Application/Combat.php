@@ -13,7 +13,7 @@ class Combat{
     public function turn(){
         if($this->turn == 0){
             echo "<br>Debut du combat!";
-            echo "<br>".$this->attaquant->getName()."( ".get_class($this->attaquant)." avec ".$this->attaquant->getArme()." ) contre ".$this->defenseur->getName()."( ".get_class($this->defenseur)." avec ".$this->defenseur->getArme()." )<br>";
+            echo "<br>".$this->attaquant->getName()."( ".get_class($this->attaquant)." ".$this->attaquant->getTalent()." avec ".$this->attaquant->getArme()." ) contre ".$this->defenseur->getName()."( ".get_class($this->defenseur)." ".$this->defenseur->getTalent()." avec ".$this->defenseur->getArme()." )<br>";
 
         }
         echo "<br>Turn $this->turn:";

@@ -11,6 +11,7 @@ class Elfe extends Personnage implements Arme, Talent{
         $this->chance= 15;
         $this->armure= 5;
         $this->arme= "mains nues";
+        $this->talent= "";
         $this->statut= true;
     }
 
@@ -71,6 +72,12 @@ class Elfe extends Personnage implements Arme, Talent{
     public function setArme(int $arme){
         $this->arme = $arme;
     }
+    public function getTalent(){
+        return $this->talent;
+    }
+    public function setTalent(int $talent){
+        $this->talent = $talent;
+    }
     public function getStatut(){
         return $this->statut;
     }
@@ -91,13 +98,19 @@ class Elfe extends Personnage implements Arme, Talent{
         call_user_func([$this, $armeAleatoire]);
     }
 
-    public function cavalier(){}
-    public function magicien(){}
-    public function guerrier(){}
-    public function necromancien(){}
-    public function voleur(){}
-    public function assassin(){}
-    public function pretre(){}
+    public function cavalier(){ $this->talent = "cavalier"; }
+    public function magicien(){ $this->talent = "magicien"; }
+    public function guerrier(){ $this->talent = "guerrier"; }
+    public function necromancien(){ $this->talent = "necromancien"; }
+    public function voleur(){ $this->talent = "voleur"; }
+    public function assassin(){ $this->talent = "assassin"; }
+    public function pretre(){ $this->talent = "pretre"; }
+
+    public function equiperTalentAleatoire() {
+        $talents = ['cavalier', 'magicien', 'guerrier', 'necromancien', 'voleur', 'assassin', 'pretre'];
+        $talentAleatoire = $talents[array_rand($talents)];
+        call_user_func([$this, $talentAleatoire]);
+    }
 
     public function attaquer(){
         if( $this->statut ){

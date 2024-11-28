@@ -11,6 +11,11 @@ class Combat{
     }
 
     public function turn(){
+        if($this->turn == 0){
+            echo "<br>Debut du combat!";
+            echo "<br>".$this->attaquant->getName()."( ".get_class($this->attaquant)." ) contre ".$this->defenseur->getName()."( ".get_class($this->defenseur)." )<br>";
+
+        }
         if($this->turn %2 == 0){
             $this->attaque($this->attaquant, $this->defenseur);
         }else{
@@ -29,8 +34,8 @@ class Combat{
 
     private function turnState(){
         echo "<br>Turn $this->turn: <br>";
-        echo $this->attaquant->getName() . " : " . $this->attaquant->getPv() . " ( " . $this->attaquant->getStatut() . " )<br>";
-        echo $this->defenseur->getName() . " : " . $this->defenseur->getPv() . " ( " . $this->defenseur->getStatut() . " )<br>";
+        echo $this->attaquant->getName() . " : " . $this->attaquant->getPv() . " pv <br>";
+        echo $this->defenseur->getName() . " : " . $this->defenseur->getPv() . " pv <br>";
     }
 
     public function isEnded(){
@@ -39,7 +44,8 @@ class Combat{
 
     public function result(){
         $perdant = (!$this->attaquant->getStatut())?$this->attaquant:$this->defenseur;
-        echo "<br>".$perdant->getName()."( ".get_class($perdant)." ) est mort !";
+        echo "<br>".$perdant->getName()."( ".get_class($perdant)." ) est mort !<br>";
+        return get_class($perdant);
     }
 
 }

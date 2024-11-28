@@ -19,17 +19,39 @@
     // $monAvion->printAvion();
 
     $monElfe = new Elfe("Jojo");
-    echo $monElfe->getName() . " : " . $monElfe->getPv() . "<br>";
-    $monElfe->arc();
+    //$monElfe->arc();
 
-    $monNain = new Nain("Robert");
-    echo $monNain->getName() . " : " . $monNain->getPv() . "<br>";
-
-    $combat = new Combat($monElfe,$monNain);
-    while(!$combat->isEnded()){
-        $combat->turn();
+    $elfes = ["Elrond", "Galadriel", "Legolas", "Arwen", "Thranduil"];
+    $nains = ["Gimli", "Thorin", "Balin", "Dwalin", "Bombur"];
+    
+    $tailleArmee = 3;
+    $armeeElfe = [];
+    $armeeNain = [];
+    for ($i = 0; $i < $tailleArmee; $i++){
+        $newElfe = new Elfe($elfes[$i]);
+        $newElfe->arc();
+        $armeeElfe[$i] = $newElfe;
     }
-    $combat->result();
+    for ($i = 0; $i < $tailleArmee; $i++){
+        $newNain = new Nain($nains[$i]);
+        $armeeNain[$i] = $newNain;
+    }
+
+
+    $combattantElfe = 0;
+    $combattantNain = 0;
+    while($combattantElfe<count($armeeElfe) && $combattantNain<count($armeeNain)){
+        $combat = new Combat($armeeElfe[$combattantElfe],$armeeNain[$combattantNain]);
+        while(!$combat->isEnded()){
+            $combat->turn();
+        }
+        $result = $combat->result();
+        $result === "Elfe" ? $combattantElfe++ : $combattantNain++;
+    }
+    $messageFin = $combattantElfe>=count($armeeElfe) ? 
+        "<br>Les Nains remportent la victoire !":
+        "<br>Les Elfes remportent la victoire !";
+    echo $messageFin;
 
     // $DomeDuTonerre;
     // $DomeDuTonerre = [$monElfe, $monNain];

@@ -24,15 +24,16 @@
     $elfes = ["Elrond", "Galadriel", "Legolas", "Arwen", "Thranduil"];
     $nains = ["Gimli", "Thorin", "Balin", "Dwalin", "Bombur"];
     
-    $tailleArmee = 3;
+    $tailleArmeeElfe = 5;
     $armeeElfe = [];
+    $tailleArmeeNain = 2;
     $armeeNain = [];
-    for ($i = 0; $i < $tailleArmee; $i++){
+    for ($i = 0; $i < $tailleArmeeElfe; $i++){
         $newElfe = new Elfe($elfes[$i]);
-        $newElfe->arc();
+        //$newElfe->arc();
         $armeeElfe[$i] = $newElfe;
     }
-    for ($i = 0; $i < $tailleArmee; $i++){
+    for ($i = 0; $i < $tailleArmeeNain; $i++){
         $newNain = new Nain($nains[$i]);
         $armeeNain[$i] = $newNain;
     }

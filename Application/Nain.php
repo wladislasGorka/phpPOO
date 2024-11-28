@@ -5,7 +5,10 @@ class Nain extends Personnage implements Arme, Talent{
         $this->name= $name;
         $this->pv= 100;
         $this->endurance= 50;
-        $this->force= 70;
+        $this->force= 20;
+        $this->agilite= 15;
+        $this->chance= 10;
+        $this->armure= 5;
         $this->statut= true;
     }
 
@@ -35,6 +38,24 @@ class Nain extends Personnage implements Arme, Talent{
     }
     public function setForce(int $force){
         $this->force = $force;
+    }
+    public function getAgilite(){
+        return $this->agilite;
+    }
+    public function setAgilite(int $agilite){
+        $this->agilite = $agilite;
+    }
+    public function getChance(){
+        return $this->chance;
+    }
+    public function setChance(int $chance){
+        $this->chance = $chance;
+    }
+    public function getArmure(){
+        return $this->armure;
+    }
+    public function setArmure(int $armure){
+        $this->armure = $armure;
     }
     public function getStatut(){
         return $this->statut;

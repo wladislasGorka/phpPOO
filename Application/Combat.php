@@ -28,15 +28,15 @@ class Combat{
         $this->turn++;
     }
 
-    private function attaque(Personnage $attaquant, Personnage $defenseur){
+    public function attaque(Personnage $attaquant, Personnage $defenseur){
         $degats = $attaquant->attaquer()-$defenseur->defendre();
             if($degats>0){
                 $defenseur->setPv($defenseur->getPv()-$degats);
             }
     }
 
-    private function turnState(){        
-        echo $this->attaquant->getName() . " : " . $this->attaquant->getPv() . " pv // ";
+    public function turnState(){        
+        echo "<br>".$this->attaquant->getName() . " : " . $this->attaquant->getPv() . " pv // ";
         echo $this->defenseur->getName() . " : " . $this->defenseur->getPv() . " pv <br>";
     }
 

@@ -21,7 +21,8 @@
     $elfes = ["Elrond", "Galadriel", "Legolas", "Arwen", "Thranduil"];
     $nains = ["Gimli", "Thorin", "Balin", "Dwalin", "Bombur"];
     
-    $tailleArmeeElfe = 2;
+
+    $tailleArmeeElfe = 3;
     $armeeElfe = [];
     $tailleArmeeNain = 2;
     $armeeNain = [];
@@ -37,6 +38,18 @@
         $newNain->equiperTalentAleatoire();
         $armeeNain[$i] = $newNain;
     }
+
+    foreach ($armeeElfe as $k => $v) {
+        echo    " ". $v->getName() . " - " . $v->getStatCombat('pv') . " ";
+        echo "<button>Attaque!</button>";
+        
+    }
+    echo "<br><br>";
+    foreach ($armeeNain as $k => $v) {
+        echo    " ". $v->getName() . " - " . $v->getStatCombat('pv') . " ";
+        echo "<button>Attaque!</button>";
+    }
+    echo "<br><br>";
 
     $combattantElfe = 0;
     $combattantNain = 0;

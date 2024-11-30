@@ -4,8 +4,18 @@
   display: flex;
   justify-content: space-between;
 }
+.character {
+  width: 300px;
+  min-height: 500px;
+  padding: 20px;
+  border: 1px solid black;
+}
+li {
+  list-style: none;
+  margin-bottom: 10px;
+}
 
 .btn-start {
-  margin-top: 100px;
+  margin-top: 50px;
   margin-left: 10%;
 }

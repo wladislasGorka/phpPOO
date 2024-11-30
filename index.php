@@ -11,18 +11,14 @@
         include("./autoloader.php");
 
         //récupérer les noms de classe pour Race et Talent afin de créer les options des éléments select
-        $races=[];
-        $talents=[];
         foreach (new DirectoryIterator('./Application/Race') as $fileInfo) {
             if($fileInfo->isDot()) continue;
-            array_push($races,$fileInfo->getBasename('.php'));
+            $races[] = $fileInfo->getBasename('.php');
         }
         foreach (new DirectoryIterator('./Application/Talent') as $fileInfo) {
             if($fileInfo->isDot()) continue;
-            array_push($talents,$fileInfo->getBasename('.php'));
+            $talents[] = $fileInfo->getBasename('.php');
         }
-        var_dump($races);
-        var_dump($talents);
     ?>
     <header>
         <h1>Dungeon Trials</h1>
@@ -34,11 +30,11 @@
                     for($i=1;$i<5;$i++){
                     echo "<section class='character'>";
                     echo "<h2>Character $i</h2>";
-                    echo "<label for='characterName$i'>Name:</label>";
+                    echo "<label for='characterName$i'>Name: </label>";
                     echo "<input type='text' name='characterName$i' id='characterName$i'>";
                     echo "<ul>";
                     echo "<li>";
-                    echo "<label for='characterRace$i'>Race:</label>";
+                    echo "<label for='characterRace$i'>Race: </label>";
                     echo "<select name='characterRace$i' id='characterRace$i'>";
                     foreach( $races as $race){
                         echo "<option value=$race>$race</option>";
@@ -46,7 +42,7 @@
                     echo "</select>";
                     echo "</li>";
                     echo "<li>";
-                    echo "<label for='characterTalent$i'>Talent:</label>";
+                    echo "<label for='characterTalent$i'>Talent: </label>";
                     echo "<select name='characterTalent$i' id='characterTalent$i'>";
                     foreach( $talents as $talent){
                         echo "<option value=$talent>$talent</option>";

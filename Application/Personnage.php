@@ -1,24 +1,22 @@
 <?php
-abstract class Personnage{
+abstract class personnage{
+
     protected string $name;
-    protected int $pv;
-    protected int $endurance;
-    protected int $force;
-    protected int $agilite;
-    protected int $chance;
-    protected int $armure;
-    protected string $arme;
-    protected string $talent;
-    protected array $statCombat;
-    protected bool $statut;
+    protected int $maxHealth;
+    protected int $health;
+    protected int $armor;
+    protected int $exp;
+    protected int $level;
 
-    protected function __construct(){}
+    public function __construct(){}
 
-    public function attaquer(){}
+    public function roll(){}
 
-    public function defendre(){}
-
-    public function deceder(){}
-
-    public function crashTheGameIfLoose(){}
+    public function action(int $action){}
+    public function action1(){}
+    public function action2(){}
+    public function action3(){}
+    public function action4(){}
+    public function action5(){}
+    public function action6(){}
 }

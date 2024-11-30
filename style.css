@@ -1,0 +1,11 @@
+.charactersContainer {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-start {
+  margin-top: 100px;
+  margin-left: 10%;
+}

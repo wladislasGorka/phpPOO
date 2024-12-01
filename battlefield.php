@@ -38,9 +38,9 @@
             <section class='combatInfo'>
                 <h2><?php echo $_SESSION['mobs'][$currentLvl]->getName(); ?></h2>
                 <ul>
-                    <li><?php echo $_SESSION['mobs'][$currentLvl]->getHealth(); ?></li>
-                    <li><?php echo $_SESSION['mobs'][$currentLvl]->getArmor(); ?></li>
-                    <li><?php echo $_SESSION['mobs'][$currentLvl]->getDamage(); ?></li>
+                    <li><?php echo "Health: ".$_SESSION['mobs'][$currentLvl]->getHealth()." / ".$_SESSION['mobs'][$currentLvl]->getMaxHealth(); ?></li>
+                    <li><?php echo "Armor: ".$_SESSION['mobs'][$currentLvl]->getArmor(); ?></li>
+                    <li><?php echo "Attack: ".$_SESSION['mobs'][$currentLvl]->getDamage(); ?></li>
                 </ul>
             </section>
             <section class='combatInfo'>
@@ -71,7 +71,7 @@
                 echo "<section class='character'>";
                 echo    "<h2>".$_SESSION['characters'][$i]->getName()."</h2>";
                 echo "<ul class='stats'>";
-                echo    "<li>Health: ".$_SESSION['characters'][$i]->getHealth()."</li>";
+                echo    "<li>Health: ".$_SESSION['characters'][$i]->getHealth()." / ".$_SESSION['characters'][$i]->getMaxHealth()."</li>";
                 echo    "<li>Armor: ".$_SESSION['characters'][$i]->getArmor()."</li>";
                 echo    "<li>Level: ".$_SESSION['characters'][$i]->getLevel()."</li>";
                 echo "</ul>";

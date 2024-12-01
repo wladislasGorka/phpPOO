@@ -9,4 +9,8 @@ class Medic implements Talent{
         $this->health = 0;
         $this->armor = 0;
     }
+
+    public function getSkills() {
+        return [new Health()];
+    }
 }

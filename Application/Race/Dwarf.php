@@ -19,8 +19,7 @@ class Dwarf implements Race{
     }
     public function getArmor():int{
         return $this->armor;
-    }
-    
+    }    
 
     public function getStats(){
         return [
@@ -28,6 +27,8 @@ class Dwarf implements Race{
             'armor' => $this->armor
         ];
     }
-    public function getSkills(){
+    
+    public function getSkills() {
+        return [new Attack()];
     }
 }

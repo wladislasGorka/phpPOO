@@ -1,0 +1,36 @@
+.combatInfoContainer {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+.combatInfo {
+  width: 300px;
+  min-height: 300px;
+  padding: 20px;
+  border: 1px solid black;
+}
+
+.charactersContainer {
+  width: 90%;
+  margin-top: 50px;
+  margin-inline: auto;
+  display: flex;
+  justify-content: space-between;
+}
+.character {
+  width: 350px;
+  min-height: 300px;
+  padding: 20px;
+  border: 1px solid black;
+}
+
+li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+}

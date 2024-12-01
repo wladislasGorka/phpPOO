@@ -26,18 +26,27 @@ $_SESSION['characters']=$characters;
 //Instanciation des Mobs par tirage aléatoire
 //Tableau constant de toutes les créatures du jeu répartit selon leur niveau
 $mobs=[
-    ['Skeleton','Mimic'],
-    ['Fisherman','Apothecary'],
-    ['Golem','Gorgon'],
-    ['Lich','Hydra'],
-    ['Ferrovore','Kraken']
+    ['Skeleton,12,2,5,1','Mimic,12,2,5,1'],
+    ['Fisherman,12,2,5,1','Apothecary,12,2,5,1'],
+    ['Golem,12,2,5,1','Gorgon,12,2,5,1'],
+    ['Lich,12,2,5,1','Hydra,12,2,5,1'],
+    ['Ferrovore,12,2,5,1','Kraken,12,2,5,1']
 ];
 //Tirage aléatoire des Mobs pour le jeu en cours (1 créature de chaque niveau)
 $selectedMobs=[];
 for($i=0; $i< 5; $i++){
-    $selectedMobs[$i]=$mobs[$i][rand(0,count($mobs[$i])-1)];
+    $elements = explode(',', $mobs[$i][rand(0,count($mobs[$i])-1)]);
+    $result = [];
+    foreach ($elements as $element) {
+        if (is_numeric($element)) {
+            $result[] = (int)$element;
+        } else {
+            $result[] = $element;
+        }
+    }
+    $selectedMobs[$i]=new Mob($result[0],$result[1],$result[2],$result[3],$result[4]);
 }
-//echo '<pre>'; print_r($selectedMobs); echo '</pre>';
+echo '<pre>'; print_r($selectedMobs); echo '</pre>';
 
 //Mobs stockés dans la session
 $_SESSION['mobs']=$selectedMobs;
@@ -45,3 +54,4 @@ $_SESSION['mobs']=$selectedMobs;
 //Instanciation du combat
 //combat stocké dans la session
 //redirection sur battlefield.php
+header("Location: battlefield.php");

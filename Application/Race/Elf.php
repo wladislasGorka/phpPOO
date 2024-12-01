@@ -22,8 +22,13 @@ class Elf implements Race{
     }
     
     public function getStats(){
-        return [$this->maxHealth, $this->armor];
+        return [
+            'maxHealth' => $this->maxHealth,
+            'armor' => $this->armor
+        ];
     }
-    public function getSkills(){
+
+    public function getSkills() {
+        return [new Heal(),new Attack()];
     }
 }

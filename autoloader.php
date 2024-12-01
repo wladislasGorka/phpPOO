@@ -9,4 +9,7 @@
         if(file_exists('./Application/Talent/' . $class . '.php')){
             include './Application/Talent/' . $class . '.php';
         }
+        if(file_exists('./Application/Skill/' . $class . '.php')){
+            include './Application/Skill/' . $class . '.php';
+        }
     });

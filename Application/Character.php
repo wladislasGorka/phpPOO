@@ -35,7 +35,7 @@ class Character extends Entity{
         return $this->skills;
     }
 
-    public function useSkill(Skill $skill, Entity $target) {
-        $skill->useSkill($target);
+    public function useSkill(Skill $skill, array $targets) {
+        $skill->useSkill($targets);
     }
 }

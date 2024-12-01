@@ -1,15 +1,15 @@
 <?php
-class Heal implements Skill {
+class Pierce implements Skill {
     protected $name;
     protected $description;
     protected $type;
 
     public function __construct() {
-        $this->name = "Heal";
-        $this->description = "Heal 2 wounds";
-        $this->type = "Ally";
-    } 
-    
+        $this->name = "Pierce";
+        $this->description = "Deal 2 damages. Ignore Target armor";
+        $this->type = "Mob";
+    }    
+
     public function getName() {
         return $this->name;
     }
@@ -25,10 +25,8 @@ class Heal implements Skill {
             if (!$target instanceof Entity) {
                 throw new InvalidArgumentException("Target must be an instance of Entity");
             }
-            $target->setHealth($target->getHealth() + 2);
-            if($target->getHealth()>$target->getMaxHealth()){
-                $target->setHealth($target->getMaxHealth());
-            }
+            $damage = 2;
+            $target->setHealth($target->getHealth() - $damage);
         }
     }
 }

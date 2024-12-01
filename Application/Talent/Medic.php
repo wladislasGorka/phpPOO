@@ -11,6 +11,6 @@ class Medic implements Talent{
     }
 
     public function getSkills() {
-        return [new Health()];
+        return [new Heal(),new Attack()];
     }
 }

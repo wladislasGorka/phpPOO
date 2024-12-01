@@ -29,6 +29,6 @@ class Dwarf implements Race{
     }
     
     public function getSkills() {
-        return [new Attack()];
+        return [new Heal(),new Attack()];
     }
 }

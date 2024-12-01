@@ -56,15 +56,42 @@ $_SESSION['actionCount']++;
 if ($typeSkill == 'Mob' && $target[0]->getHealth() == 0) {
     $_SESSION['breach'] = 4;
     $_SESSION['level']++;
+    $_SESSION['actionCount'] = 0;
     foreach ($characters as $character) {
         $character->levelUp();
+        $character->setPeril(0);
     }
 }
 // Apres 4 action du joueur le mob attack
+function maxPeril($characters){
+    $maxPeril = 0;
+    foreach ($characters as $character) {
+        $maxPeril = max($maxPeril, $character->getPeril());
+    }
+    return $maxPeril;
+}
+function mobTarget($characters,$maxPeril){
+    foreach ($characters as $character) {
+        if ($character->getPeril() == $maxPeril) {
+            $mobTarget[] = $character;
+        }
+    }
+    return $mobTarget;
+}
+//echo $_SESSION['actionCount'];
 if($_SESSION['actionCount'] == 4){
     $_SESSION['actionCount'] = 0;
-    //attak
+    $_SESSION['breach']--;
+    //attack
+    $mobTargets = mobTarget($characters,maxPeril($characters));
+    //var_dump($mobTargets);
+    foreach ($mobTargets as $mobTarget) {
+        $_SESSION['mobs'][$_SESSION['level']]->attack($mobTarget,count($mobTargets));
+    }
+    foreach ($characters as $character) {
+        $character->setPeril(0);
+    }
 }
 
 header('Location: battlefield.php');
-//header( "refresh:5;url=battlefield.php" );
+//header( "refresh:2;url=battlefield.php" );

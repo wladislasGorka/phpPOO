@@ -48,22 +48,20 @@
             <section class='combatInfo'>
                 <h2>Breach</h2>
                 <ul>
-                    <li>5</li>
-                    <li>4</li>
-                    <li>3</li>
-                    <li>2</li>
-                    <li>1</li>
-                    <li>0</li>
+                    <li>4 : <?php echo $_SESSION['breach'] == 4 ? "X" : " "; ?></li>
+                    <li>3 : <?php echo $_SESSION['breach'] == 3 ? "X" : " "; ?></li>
+                    <li>2 : <?php echo $_SESSION['breach'] == 2 ? "X" : " "; ?></li>
+                    <li>1 : <?php echo $_SESSION['breach'] == 1 ? "X" : " "; ?></li>
+                    <li>0 : <?php echo $_SESSION['breach'] == 0 ? "X" : " "; ?></li>
                 </ul>
             </section>
             <section class='combatInfo'>
             <h2>Peril</h2>
                 <ul>
-                    <li>4</li>
-                    <li>3</li>
-                    <li>2</li>
-                    <li>1</li>
-                    <li>0</li>
+                    <li><?php echo $_SESSION['characters'][0]->getName()." : ".$_SESSION['characters'][0]->getPeril() ?></li>
+                    <li><?php echo $_SESSION['characters'][1]->getName()." : ".$_SESSION['characters'][1]->getPeril() ?></li>
+                    <li><?php echo $_SESSION['characters'][2]->getName()." : ".$_SESSION['characters'][2]->getPeril() ?></li>
+                    <li><?php echo $_SESSION['characters'][3]->getName()." : ".$_SESSION['characters'][3]->getPeril() ?></li>
                 </ul>
             </section>
         </div>

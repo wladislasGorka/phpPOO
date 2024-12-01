@@ -17,4 +17,11 @@ class Mob extends Entity{
     public function setDamage(int $damage):void{
         $this->damage=$damage;
     }
+
+    public function attack(Entity $target, int $nbTarget){
+        $damage = ($this->damage / $nbTarget) - $target->getArmor();
+        if($damage > 0){
+            $target->setHealth($target->getHealth() - $damage);
+        }
+    }
 }

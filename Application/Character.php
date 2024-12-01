@@ -4,6 +4,7 @@ class Character extends Entity{
     protected Race $race;
     protected Talent $talent;
     protected array $skills;
+    protected int $peril;
 
     public function __construct(string $name, Race $race, Talent $talent){
         parent::__construct($name);
@@ -13,6 +14,7 @@ class Character extends Entity{
         $this->maxHealth=$race->getMaxHealth();
         $this->health=$race->getMaxHealth();
         $this->armor=$race->getArmor();
+        $this->peril=0;
         $this->skills = array_merge($race->getSkills(), $talent->getSkills());
     }
 
@@ -22,6 +24,12 @@ class Character extends Entity{
     public function getTalent(): Talent{
         return $this->talent;
     }
+    public function getCharacterSkills() {
+        return $this->skills;
+    }
+    public function getPeril(): int{
+        return $this->peril;
+    }
 
     public function setRace(Talent $race): void{
         $this->race=$race;
@@ -29,13 +37,13 @@ class Character extends Entity{
     public function setTalent(Talent $talent): void{
         $this->talent=$talent;
     }
-
-
-    public function getCharacterSkills() {
-        return $this->skills;
+    public function setPeril(int $peril): void{
+        $this->peril=$peril;
     }
+    
 
     public function useSkill(Skill $skill, array $targets) {
+        $this->peril = $skill->getPeril();
         $skill->useSkill($targets);
     }
 

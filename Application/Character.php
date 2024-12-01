@@ -38,4 +38,13 @@ class Character extends Entity{
     public function useSkill(Skill $skill, array $targets) {
         $skill->useSkill($targets);
     }
+
+    public function levelUp(){
+        $this->level++;
+    }
+
+    public function jsonSerialize()
+    {
+        return get_object_vars($this);
+    }
 }

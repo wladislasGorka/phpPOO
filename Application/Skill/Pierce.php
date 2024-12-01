@@ -3,11 +3,13 @@ class Pierce implements Skill {
     protected $name;
     protected $description;
     protected $type;
+    protected $peril;
 
     public function __construct() {
         $this->name = "Pierce";
         $this->description = "Deal 2 damages. Ignore Target armor";
         $this->type = "Mob";
+        $this->peril = "4";
     }    
 
     public function getName() {
@@ -19,6 +21,9 @@ class Pierce implements Skill {
     public function getType() {
         return $this->type;
     }
+    public function getPeril() {
+        return $this->peril;
+    }
 
     public function useSkill(array $targets) {
         foreach ($targets as $target) {
@@ -28,5 +33,10 @@ class Pierce implements Skill {
             $damage = 2;
             $target->setHealth($target->getHealth() - $damage);
         }
+    }
+
+    public function jsonSerialize()
+    {
+        return get_object_vars($this);
     }
 }

@@ -3,11 +3,13 @@ class Heal implements Skill {
     protected $name;
     protected $description;
     protected $type;
+    protected $peril;
 
     public function __construct() {
         $this->name = "Heal";
         $this->description = "Heal 2 wounds";
         $this->type = "Ally";
+        $this->peril = "1";
     } 
     
     public function getName() {
@@ -18,6 +20,9 @@ class Heal implements Skill {
     }
     public function getType() {
         return $this->type;
+    }
+    public function getPeril() {
+        return $this->peril;
     }
 
     public function useSkill(array $targets) {
@@ -30,5 +35,10 @@ class Heal implements Skill {
                 $target->setHealth($target->getMaxHealth());
             }
         }
+    }
+
+    public function jsonSerialize()
+    {
+        return get_object_vars($this);
     }
 }

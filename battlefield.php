@@ -11,14 +11,14 @@
         include("./autoloader.php");
         session_start();
 
-        $currentLvl=0;
-        $currentBreach=4;
-        if(isset($_SESSION["currentLvl"])){
-            $currentLvl=$_SESSION["currentLvl"];
+        $currentBreach = $_SESSION['breach'];
+        if($currentBreach==0){
+            $_SESSION['breach'] = 4;
+            $_SESSION['level']++;
         }
-        if(isset($_SESSION["currentBreach"])){
-            $currentBreach=$_SESSION["currentBreach"];
-        }
+        $currentLvl = $_SESSION['level'];
+        
+
 
         //récupérer les noms de classe pour Race et Talent afin de créer les options des éléments select
         foreach (new DirectoryIterator('./Application/Race') as $fileInfo) {
@@ -76,56 +76,42 @@
                 echo    "<li>Level: ".$_SESSION['characters'][$i]->getLevel()."</li>";
                 echo "</ul>";
                 echo "<ul class='skills'>";
-                echo    "<li class='item'>
-                            <h4>".$_SESSION['characters'][$i]->getCharacterSkills()[0]->getName()."</h4>
-                            <p>".$_SESSION['characters'][$i]->getCharacterSkills()[0]->getDescription()."</p>
-                            <form method='POST'>
-                                <input type='hidden' name='usedcharacter' value='".serialize($_SESSION['characters'][$i])."'>
-                                <input type='hidden' name='usedSkill' value='".serialize($_SESSION['characters'][$i]->getCharacterSkills()[0])."'>";
-                                // input target en fonction du type de skill
-                                $type = $_SESSION['characters'][$i]->getCharacterSkills()[0]->getType();
-                                switch ($type) {
-                                    case 'Mob':
-                                        $targets=[$_SESSION['mobs'][$currentLvl]];
-                                        echo "<input type='hidden' name='targets' value='".serialize($targets)."'>";
-                                        break;
-                                    case 'Self':
-                                        $targets=[$_SESSION['characters'][$i]];
-                                        echo "<input type='hidden' name='targets' value='".serialize($targets)."'>";
-                                        break;
-                                    case 'All':
-                                        $targets=[$_SESSION['characters'][0],$_SESSION['characters'][1],$_SESSION['characters'][2],$_SESSION['characters'][3]];
-                                        echo "<input type='hidden' name='targets' value='".serialize($targets)."'>";
-                                        break;
-                                    case 'Ally':
-                                        echo "<select name='targets'>";
-                                        foreach($_SESSION['characters'] as $character){
-                                            if($character->getName() != $_SESSION['characters'][$i]->getName()){
-                                                echo "<option>".$character->getName()."</option>";
+                for($j=0; $j < count($_SESSION['characters'][$i]->getCharacterSkills()); $j++){
+                    echo    "<li class='item'>
+                                <h4>".$_SESSION['characters'][$i]->getCharacterSkills()[$j]->getName()."</h4>
+                                <p>".$_SESSION['characters'][$i]->getCharacterSkills()[$j]->getDescription()."</p>
+                                <form method='POST' name='usedAction' action='usedAction.php'>
+                                    <input type='hidden' name='usedCharacter' value='".$_SESSION['characters'][$i]->getName()."'>
+                                    <input type='hidden' name='usedSkill' value='".$_SESSION['characters'][$i]->getCharacterSkills()[$j]->getName()."'>";
+                                    // input target en fonction du type de skill
+                                    $type = $_SESSION['characters'][$i]->getCharacterSkills()[$j]->getType();
+                                    switch ($type) {
+                                        case 'Mob':
+                                            $targets=[$_SESSION['mobs'][$currentLvl]];
+                                            echo "<input type='hidden' name='targets' value='".$targets[0]->getName()."'>";
+                                            break;
+                                        case 'Self':
+                                            $targets=[$_SESSION['characters'][$i]];
+                                            echo "<input type='hidden' name='targets' value='".$targets->getName()."'>";
+                                            break;
+                                        case 'All':
+                                            $targets=[$_SESSION['characters'][0],$_SESSION['characters'][1],$_SESSION['characters'][2],$_SESSION['characters'][3]];
+                                            echo "<input type='hidden' name='targets' value='".$targets->getName()."'>";
+                                            break;
+                                        case 'Ally':
+                                            echo "<select name='targets'>";
+                                            foreach($_SESSION['characters'] as $targets){
+                                                if($targets->getName() != $_SESSION['characters'][$i]->getName()){
+                                                    echo "<option value='".$targets->getName()."'>".$targets->getName()."</option>";
+                                                }
                                             }
-                                        }
-                                        echo "</select>";
-                                        break;
-                                }
-
-                echo            "<input type='submit' value='Use'>
-                            </form>
-                        </li>";
-                echo    "<li class='item'>
-                            <h4>".$_SESSION['characters'][$i]->getCharacterSkills()[1]->getName()."</h4>
-                            <p>".$_SESSION['characters'][$i]->getCharacterSkills()[1]->getDescription()."</p>
-                            <button type='button'>Use</button>
-                        </li>";
-                echo    "<li class='item'>
-                            <h4>".$_SESSION['characters'][$i]->getCharacterSkills()[2]->getName()."</h4>
-                            <p>".$_SESSION['characters'][$i]->getCharacterSkills()[2]->getDescription()."</p>
-                            <button type='button'>Use</button>
-                        </li>";
-                echo    "<li class='item'>
-                            <h4>".$_SESSION['characters'][$i]->getCharacterSkills()[3]->getName()."</h4>
-                            <p>".$_SESSION['characters'][$i]->getCharacterSkills()[3]->getDescription()."</p>
-                            <button type='button'>Use</button>
-                        </li>";
+                                            echo "</select>";
+                                            break;
+                                    }
+                    echo            "<input type='submit' value='Use'>
+                                </form>
+                            </li>";
+                }
                 echo "</ul>";
                 echo "</section>";
             }

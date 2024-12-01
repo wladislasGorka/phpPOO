@@ -12,6 +12,10 @@ if($_POST['characterName1']=="" || $_POST['characterName2']=="" || $_POST['chara
 include("./autoloader.php");
 session_start();
 
+$_SESSION['level'] = 0;
+$_SESSION['breach'] = 4;
+$_SESSION['actionCount'] = 0;
+
 //Instanciation des personnages.
 for( $i=1; $i<5; $i++){
     $raceName=$_POST["characterRace$i"];
@@ -26,7 +30,7 @@ $_SESSION['characters']=$characters;
 //Instanciation des Mobs par tirage aléatoire
 //Tableau constant de toutes les créatures du jeu répartit selon leur niveau
 $mobs=[
-    ['Skeleton,12,2,5,1','Mimic,12,2,5,1'],
+    ['Skeleton,12,0,5,1','Mimic,12,2,5,1'],
     ['Fisherman,12,2,5,1','Apothecary,12,2,5,1'],
     ['Golem,12,2,5,1','Gorgon,12,2,5,1'],
     ['Lich,12,2,5,1','Hydra,12,2,5,1'],

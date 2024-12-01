@@ -31,4 +31,9 @@ class Human implements Race{
     public function getSkills() {
         return [new Heal(),new Attack()];
     }
+
+    public function jsonSerialize()
+    {
+        return get_object_vars($this);
+    }
 }

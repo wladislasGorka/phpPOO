@@ -26,6 +26,9 @@
     </header>
     <main>
         <?php
+            if(isset($_SESSION['breach']) && $_SESSION['breach'] == 0){
+                echo '<h3>Perdu! Retentez votre chance avec une nouvelle composition d\'équipe.</h3>';
+            }
             if(isset($_SESSION['level']) && $_SESSION['level'] == 5){
                 echo '<h3>Bravo vous avez triomphé! Retentez votre chance avec une nouvelle composition d\'équipe.</h3>';
             }

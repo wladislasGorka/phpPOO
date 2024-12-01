@@ -13,8 +13,7 @@
 
         $currentBreach = $_SESSION['breach'];
         if($currentBreach==0){
-            $_SESSION['breach'] = 4;
-            $_SESSION['level']++;
+            header('Location: index.php');
         }
         $currentLvl = $_SESSION['level'];
         if($currentLvl== 5){

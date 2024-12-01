@@ -67,3 +67,4 @@ if($_SESSION['actionCount'] == 4){
 }
 
 header('Location: battlefield.php');
+//header( "refresh:5;url=battlefield.php" );

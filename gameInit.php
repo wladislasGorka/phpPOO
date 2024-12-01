@@ -30,11 +30,11 @@ $_SESSION['characters']=$characters;
 //Instanciation des Mobs par tirage aléatoire
 //Tableau constant de toutes les créatures du jeu répartit selon leur niveau
 $mobs=[
-    ['Skeleton,12,0,5,1','Mimic,12,2,5,1'],
-    ['Fisherman,12,2,5,1','Apothecary,12,2,5,1'],
-    ['Golem,12,2,5,1','Gorgon,12,2,5,1'],
-    ['Lich,12,2,5,1','Hydra,12,2,5,1'],
-    ['Ferrovore,12,2,5,1','Kraken,12,2,5,1']
+    ['Skeleton,12,0,5,1','Mimic,12,0,5,1'],
+    ['Fisherman,12,0,5,1','Apothecary,12,0,5,1'],
+    ['Golem,12,0,5,1','Gorgon,12,0,5,1'],
+    ['Lich,12,0,5,1','Hydra,12,0,5,1'],
+    ['Ferrovore,12,0,5,1','Kraken,12,0,5,1']
 ];
 //Tirage aléatoire des Mobs pour le jeu en cours (1 créature de chaque niveau)
 $selectedMobs=[];

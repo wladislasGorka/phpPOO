@@ -17,6 +17,9 @@
             $_SESSION['level']++;
         }
         $currentLvl = $_SESSION['level'];
+        if($currentLvl== 5){
+            header('Location: index.php');
+        }
         
 
 

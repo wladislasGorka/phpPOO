@@ -9,6 +9,7 @@
 <body>
     <?php 
         include("./autoloader.php");
+        session_start();
 
         //récupérer les noms de classe pour Race et Talent afin de créer les options des éléments select
         foreach (new DirectoryIterator('./Application/Race') as $fileInfo) {
@@ -24,6 +25,11 @@
         <h1>Dungeon Trials</h1>
     </header>
     <main>
+        <?php
+            if(isset($_SESSION['level']) && $_SESSION['level'] == 5){
+                echo '<h3>Bravo vous avez triomphé! Retentez votre chance avec une nouvelle composition d\'équipe.</h3>';
+            }
+        ?>
         <form method='POST' name='charatersCreation' action=gameInit.php>
             <div class='charactersContainer'>
                 <?php

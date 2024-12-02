@@ -5,7 +5,7 @@ class Dwarf implements Race{
 
     public function __construct() {
         $this->maxHealth = 8;
-        $this->armor = 2;
+        $this->armor = 0;
     }
 
     public function setMaxHealth(int $maxHealth){
@@ -27,9 +27,17 @@ class Dwarf implements Race{
             'armor' => $this->armor
         ];
     }
+
+    public function levelUp(int $level){
+        if($level%2== 0){
+            return [2,1];
+        }else{
+            return [2,0];
+        }
+    }
     
     public function getSkills() {
-        return [new Heal(),new Attack()];
+        return [new Attack(),new Heal()];
     }
 
     public function jsonSerialize()

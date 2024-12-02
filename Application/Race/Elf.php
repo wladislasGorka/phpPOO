@@ -28,8 +28,16 @@ class Elf implements Race{
         ];
     }
 
+    public function levelUp(int $level){
+        if($level%2== 0){
+            return [1,0];
+        }else{
+            return [1,0];
+        }
+    }
+
     public function getSkills() {
-        return [new Heal(),new Attack()];
+        return [new Attack(),new Pierce()];
     }
 
     public function jsonSerialize()

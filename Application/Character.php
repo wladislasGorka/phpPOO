@@ -49,6 +49,13 @@ class Character extends Entity{
 
     public function levelUp(){
         $this->level++;
+        $newStats = $this->race->levelUp($this->level);
+        $this->maxHealth+= $newStats[0];
+        $this->health+= $newStats[0];
+        $this->armor+= $newStats[1];
+        $newSkills = $this->talent->levelUp($this->level);
+        $this->skills[2]= $newSkills[0];
+        $this->skills[3]= $newSkills[1];
     }
 
     public function jsonSerialize()

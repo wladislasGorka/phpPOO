@@ -40,11 +40,11 @@
                     echo "<section class='character'>";
                     echo "<h2>Character $i</h2>";
                     echo "<label for='characterName$i'>Name: </label>";
-                    echo "<input type='text' name='characterName$i' id='characterName$i'>";
+                    echo "<input type='text' name='characterName$i' id='characterName$i' required>";
                     echo "<ul>";
                     echo "<li>";
                     echo "<label for='characterRace$i'>Race: </label>";
-                    echo "<select name='characterRace$i' id='characterRace$i'>";
+                    echo "<select name='characterRace$i' id='characterRace$i' onChange='updateInfoRace(characterRace$i,$i)'>";
                     foreach( $races as $race){
                         echo "<option value=$race>$race</option>";
                     }
@@ -52,7 +52,7 @@
                     echo "</li>";
                     echo "<li>";
                     echo "<label for='characterTalent$i'>Talent: </label>";
-                    echo "<select name='characterTalent$i' id='characterTalent$i'>";
+                    echo "<select name='characterTalent$i' id='characterTalent$i' onChange='updateInfoTalent(characterTalent$i,$i)'>";
                     foreach( $talents as $talent){
                         echo "<option value=$talent>$talent</option>";
                     }
@@ -60,24 +60,24 @@
                     echo "</li>";
                     echo "</ul>";
 
-                    // <ul>
-                    //     <li>Race
-                    //         <ul>
-                    //             <li>Skill 1:</li>
-                    //             <li>Description du skill 1</li>
-                    //             <li>Skill 2:</li>
-                    //             <li>Description du skill 2</li>
-                    //         </ul>
-                    //     </li>
-                    //     <li>Talent
-                    //         <ul>
-                    //             <li>Skill 4:</li>
-                    //             <li>Description du skill 4</li>
-                    //             <li>Skill 5:</li>
-                    //             <li>Description du skill 5</li>
-                    //         </ul>
-                    //     </li>
-                    // </ul>
+                    echo "<ul class='infos'>";
+                    echo     "<li>Race";
+                    echo         "<ul>";
+                    echo             "<li id='".$i."raceSkill1Name'>Skill 1:</li>";
+                    echo             "<li id='".$i."raceSkill1Description'>Description du skill 1</li>";
+                    echo             "<li id='".$i."raceSkill2Name'>Skill 2:</li>";
+                    echo             "<li id='".$i."raceSkill2Description'>Description du skill 2</li>";
+                    echo         "</ul>";
+                    echo     "</li>";
+                    echo     "<li>Talent";
+                    echo         "<ul>";
+                    echo             "<li id='".$i."talentSkill1Name'>Skill 4:</li>";
+                    echo             "<li id='".$i."talentSkill1Description'>Description du skill 4</li>";
+                    echo             "<li id='".$i."talentSkill2Name'>Skill 5:</li>";
+                    echo             "<li id='".$i."talentSkill2Description'>Description du skill 5</li>";
+                    echo         "</ul>";
+                    echo     "</li>";
+                    echo "</ul>";
                     echo "</section>";
                     }
                 ?>
@@ -87,5 +87,32 @@
         </form>
         
     </main>
+    <script type="text/javascript" src="skillsList.js"></script>
+    <script>
+        function updateInfoRace(element,id){
+            const selectedRace = element.value;
+            document.getElementById(id+'raceSkill1Name').innerHTML = skillsList["race"][selectedRace]["skill1"]["name"];
+            document.getElementById(id+'raceSkill1Description').innerHTML = skillsList["race"][selectedRace]["skill1"]["description"];
+            document.getElementById(id+'raceSkill2Name').innerHTML = skillsList["race"][selectedRace]["skill2"]["name"];
+            document.getElementById(id+'raceSkill2Description').innerHTML = skillsList["race"][selectedRace]["skill2"]["description"];
+        }
+        function updateInfoTalent(element,id){
+            const selectedTalent = element.value;
+            document.getElementById(id+'talentSkill1Name').innerHTML = skillsList["talent"][selectedTalent]["skill1"]["name"];
+            document.getElementById(id+'talentSkill1Description').innerHTML = skillsList["talent"][selectedTalent]["skill1"]["description"];
+            document.getElementById(id+'talentSkill2Name').innerHTML = skillsList["talent"][selectedTalent]["skill2"]["name"];
+            document.getElementById(id+'talentSkill2Description').innerHTML = skillsList["talent"][selectedTalent]["skill2"]["description"];
+        }
+        window.onload = function() {
+            for(let i=1; i<5; i++){
+                const selectElement1 = document.getElementById('characterRace'+i);
+                const event1 = new Event('change');
+                selectElement1.dispatchEvent(event1);
+                const selectElement2 = document.getElementById('characterTalent'+i);
+                const event2 = new Event('change');
+                selectElement2.dispatchEvent(event2);
+            }        
+        };
+    </script>
 </body>
 </html>

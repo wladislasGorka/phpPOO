@@ -11,6 +11,9 @@
   border: 1px solid black;
 }
 
+.infos {
+  padding: 0;
+}
 li {
   list-style: none;
   margin-bottom: 10px;

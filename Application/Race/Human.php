@@ -5,7 +5,7 @@ class Human implements Race{
 
     public function __construct() {
         $this->maxHealth = 10;
-        $this->armor = 1;
+        $this->armor = 0;
     }
 
     public function setMaxHealth(int $maxHealth){
@@ -28,8 +28,16 @@ class Human implements Race{
         ];
     }
 
+    public function levelUp(int $level){
+        if($level%2== 0){
+            return [1,1];
+        }else{
+            return [2,0];
+        }
+    }
+
     public function getSkills() {
-        return [new Heal(),new Attack()];
+        return [new Attack(),new Heal()];
     }
 
     public function jsonSerialize()

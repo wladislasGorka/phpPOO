@@ -11,7 +11,17 @@ class Warrior implements Talent{
     }
 
     public function getSkills() {
-        return [new Heal(),new Attack()];
+        return [new Attack(),new Attack()];
+    }
+
+    public function levelUp(int $level) {
+        switch($level) {
+            case 1: return [new Attack(),new Attack()]; break;
+            case 2: return [new Attack(),new Strike()]; break;
+            case 3: return [new Strike(),new Strike()]; break;
+            case 4: return [new Strike(),new Strike()]; break;
+            case 5: return [new Strike(),new Strike()]; break;
+        }
     }
 
     public function jsonSerialize()

@@ -92,11 +92,11 @@
                                             break;
                                         case 'Self':
                                             $targets=[$_SESSION['characters'][$i]];
-                                            echo "<input type='hidden' name='targets' value='".$targets->getName()."'>";
+                                            echo "<input type='hidden' name='targets' value='".$targets[0]->getName()."'>";
                                             break;
                                         case 'All':
                                             $targets=[$_SESSION['characters'][0],$_SESSION['characters'][1],$_SESSION['characters'][2],$_SESSION['characters'][3]];
-                                            echo "<input type='hidden' name='targets' value='".$targets->getName()."'>";
+                                            echo "<input type='hidden' name='targets' value='".$targets[0]->getName()."'>";
                                             break;
                                         case 'Ally':
                                             echo "<select name='targets'>";

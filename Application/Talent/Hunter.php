@@ -11,7 +11,17 @@ class Hunter implements Talent{
     }
 
     public function getSkills() {
-        return [new Heal(),new Pierce()];
+        return [new Attack(),new Pierce()];
+    }
+
+    public function levelUp(int $level) {
+        switch($level) {
+            case 1: return [new Attack(),new Pierce()]; break;
+            case 2: return [new Strike(),new Pierce()]; break;
+            case 3: return [new Strike(),new Pierce()]; break;
+            case 4: return [new Strike(),new Pierce()]; break;
+            case 5: return [new Strike(),new Pierce()]; break;
+        }
     }
 
     public function jsonSerialize()

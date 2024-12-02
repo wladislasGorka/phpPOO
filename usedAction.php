@@ -53,7 +53,7 @@ $_SESSION['actionCount']++;
 //  echo '<pre>'; print_r($target); echo '</pre>';
 
 // Si le mob est tué
-if ($typeSkill == 'Mob' && $target[0]->getHealth() == 0) {
+if ($typeSkill == 'Mob' && $target[0]->getHealth() <= 0) {
     $_SESSION['breach'] = 4;
     $_SESSION['level']++;
     $_SESSION['actionCount'] = 0;

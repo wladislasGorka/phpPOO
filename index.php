@@ -35,52 +35,49 @@
         ?>
         <form method='POST' name='charatersCreation' action=gameInit.php>
             <div class='charactersContainer'>
-                <?php
-                    for($i=1;$i<5;$i++){
-                    echo "<section class='character'>";
-                    echo "<h2>Character $i</h2>";
-                    echo "<label for='characterName$i'>Name: </label>";
-                    echo "<input type='text' name='characterName$i' id='characterName$i' required>";
-                    echo "<ul>";
-                    echo "<li>";
-                    echo "<label for='characterRace$i'>Race: </label>";
-                    echo "<select name='characterRace$i' id='characterRace$i' onChange='updateInfoRace(characterRace$i,$i)'>";
-                    foreach( $races as $race){
-                        echo "<option value=$race>$race</option>";
-                    }
-                    echo "</select>";
-                    echo "</li>";
-                    echo "<li>";
-                    echo "<label for='characterTalent$i'>Talent: </label>";
-                    echo "<select name='characterTalent$i' id='characterTalent$i' onChange='updateInfoTalent(characterTalent$i,$i)'>";
-                    foreach( $talents as $talent){
-                        echo "<option value=$talent>$talent</option>";
-                    }
-                    echo "</select>";
-                    echo "</li>";
-                    echo "</ul>";
-
-                    echo "<ul class='infos'>";
-                    echo     "<li>Race";
-                    echo         "<ul>";
-                    echo             "<li id='".$i."raceSkill1Name'>Skill 1:</li>";
-                    echo             "<li id='".$i."raceSkill1Description'>Description du skill 1</li>";
-                    echo             "<li id='".$i."raceSkill2Name'>Skill 2:</li>";
-                    echo             "<li id='".$i."raceSkill2Description'>Description du skill 2</li>";
-                    echo         "</ul>";
-                    echo     "</li>";
-                    echo     "<li>Talent";
-                    echo         "<ul>";
-                    echo             "<li id='".$i."talentSkill1Name'>Skill 4:</li>";
-                    echo             "<li id='".$i."talentSkill1Description'>Description du skill 4</li>";
-                    echo             "<li id='".$i."talentSkill2Name'>Skill 5:</li>";
-                    echo             "<li id='".$i."talentSkill2Description'>Description du skill 5</li>";
-                    echo         "</ul>";
-                    echo     "</li>";
-                    echo "</ul>";
-                    echo "</section>";
-                    }
-                ?>
+                <?php for($i=1;$i<5;$i++): $charName='characterName'.$i; $charRace='characterRace'.$i; $charTalent='characterTalent'.$i;?>
+                    <section class='character'>
+                        <h2>Character <?php echo $i; ?></h2>
+                        <label for=<?php echo $charName; ?>>Name: </label>
+                        <input type='text' name=<?php echo $charName; ?> id=<?php echo $charName; ?> required>
+                        <ul>
+                            <li>
+                                <label for=<?php echo $charRace; ?>>Race: </label>
+                                <select name=<?php echo $charRace; ?> id=<?php echo $charRace; ?> onChange='updateInfoRace(<?php echo $charRace; ?>,<?php echo $i; ?>)'>
+                                <?php foreach( $races as $race): ?>
+                                    <option value='<?php echo $race; ?>'><?php echo $race; ?></option>
+                                <?php endforeach; ?>                    
+                                </select>
+                            </li>
+                            <li>
+                                <label for=<?php echo $charTalent; ?>>Talent: </label>
+                                <select name=<?php echo $charTalent; ?> id=<?php echo $charTalent; ?> onChange='updateInfoTalent(<?php echo $charTalent; ?>,<?php echo $i; ?>)'>
+                                <?php foreach( $talents as $talent): ?>
+                                    <option value='<?php echo $talent; ?>'><?php echo $talent; ?></option>
+                                <?php endforeach; ?>                    
+                                </select>
+                            </li>
+                        </ul>
+                        <ul class='infos'>
+                            <li>Race
+                                <ul>
+                                    <li id='<?php echo $i; ?>raceSkill1Name'>Skill 1:</li>
+                                    <li id='<?php echo $i; ?>raceSkill1Description'>Description du skill 1</li>
+                                    <li id='<?php echo $i; ?>raceSkill2Name'>Skill 2:</li>
+                                    <li id='<?php echo $i; ?>raceSkill2Description'>Description du skill 2</li>
+                                </ul>
+                            </li>
+                            <li>Talent
+                                <ul>
+                                    <li id='<?php echo $i; ?>talentSkill1Name'>Skill 4:</li>
+                                    <li id='<?php echo $i; ?>talentSkill1Description'>Description du skill 4</li>
+                                    <li id='<?php echo $i; ?>talentSkill2Name'>Skill 5:</li>
+                                    <li id='<?php echo $i; ?>talentSkill2Description'>Description du skill 5</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>                    
+                <?php endfor; ?>
             </div>
 
             <input type='submit' value='START' class='btn btn-start'>

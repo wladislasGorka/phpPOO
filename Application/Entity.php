@@ -33,10 +33,18 @@ abstract class Entity{
         $this->maxHealth=$maxHealth;
     }
     public function setHealth(int $health){
-        $this->health=$health;
+        if($health > $this->maxHealth){
+            $this->health= $health;
+        }else{
+            $this->health=$this->maxHealth;
+        }
     }
     public function setArmor(int $armor){
-        $this->armor=$armor;
+        if($this->armor<0){
+            $this->armor= 0;
+        }else{
+            $this->armor=$armor;
+        }
     }
     public function setLevel(int $level){
         $this->level=$level;

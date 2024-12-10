@@ -1,0 +1,25 @@
+.charactersContainer {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+.character {
+  width: 300px;
+  min-height: 300px;
+  padding: 20px;
+  border: 1px solid black;
+}
+
+.infos {
+  padding: 0;
+}
+li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+.btn-start {
+  margin-top: 50px;
+  margin-left: 10%;
+}
